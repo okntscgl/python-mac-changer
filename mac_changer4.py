@@ -41,8 +41,5 @@ else:
 
 
 
-# regex101 de linuxda bulmak istediğin yeri kopyalayıp regex101.com sitesine kopyaladıktan sonra oradaki komutlara
-
-# bakarak ne istediğini buluyorsun ve burada re kütüphanesiyle oradaki komutları birebir yazıyorsun
-
-# stringe python3 e uyarladığımız için çevirdik - terminalde çalıştırdığında verilen hatadan görebilirsin
+#After copying the place you want to find in Linux to regex101, you check the commands there on the regex101.com site to see what you want to find, and then you write those commands here using the re library.
+#Since we adapted it to Python3 for the string, we converted it - you can see these errors when you run it in the terminal.
