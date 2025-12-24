@@ -1,47 +1,109 @@
-MyMacChanger
-MyMacChanger is a simple Python tool that allows users to change the MAC address of a specified network interface. This can be useful for network security testing, privacy protection, or bypassing network restrictions. The script handles the process of bringing down the interface, applying the new MAC address, and bringing the interface back online. It also verifies whether the change was successful.
+# MyMacChanger
 
-Features
-Change the MAC address of a given network interface.
-Verifies and confirms the new MAC address.
-Requirements
-Python 3.x
-subprocess and optparse modules (both are included with the Python standard library).
-Installation
-Clone this repository or download the project files:
+MyMacChanger is a simple **Python-based MAC address changer** that allows users to modify the MAC address of a specified network interface.
 
-bash
+This tool is commonly used in **network security testing, privacy protection, and lab environments** where MAC address spoofing is required.  
+The script safely brings the interface down, applies the new MAC address, brings it back up, and verifies whether the change was successful.
+
+> ⚠️ **Disclaimer**  
+> This tool is intended **only for educational purposes, security labs, and authorized environments**.  
+> Changing your MAC address without permission may violate network policies or local laws.
+
+---
+
+## Features
+
+- Change the MAC address of a specified network interface
+- Verifies and confirms the new MAC address
+- Simple command-line interface
+- Uses only Python standard libraries
+
+---
+
+## Requirements
+
+- Python 3.x
+- Linux-based operating system
+- Root / sudo privileges (required to modify network interfaces)
+
+> The script uses `subprocess` and `optparse`, both included in the Python standard library.
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
 git clone https://github.com/okntscgl/MyMacChanger.git
-Navigate to the project directory:
-
-bash
 cd MyMacChanger
+No additional dependencies are required.
+
 Usage
-To run the script, use the following command:
+Run the script with the target interface and desired MAC address:
 
 bash
 python MyMacChanger.py -i <interface> -m <new_mac_address>
 Parameters
--i, --interface: The network interface where you want to change the MAC address (e.g., eth0, wlan0).
--m, --mac: The new MAC address in the format XX:XX:XX:XX:XX:XX (e.g., 00:11:22:33:44:55).
+-i, --interface
+Network interface to modify (e.g. eth0, wlan0)
+
+-m, --mac
+New MAC address in the format XX:XX:XX:XX:XX:XX
+
 Example
-To change the MAC address of your wireless interface wlan0 to 00:11:22:33:44:55, run:
+Change the MAC address of wlan0 to 00:11:22:33:44:55:
 
 bash
 python MyMacChanger.py -i wlan0 -m 00:11:22:33:44:55
 How It Works
-User Input: The get_user_input function gathers the network interface and new MAC address from the user.
-MAC Address Change: The change_mac_address function uses the subprocess module to:
-Bring the specified interface down.
-Change the MAC address.
-Bring the interface back up.
-Verify MAC Address: The control_new_mac function confirms that the new MAC address has been applied correctly by using regular expressions to search the ifconfig output.
-Notification: The script displays a success or error message based on whether the MAC address was updated successfully.
+User Input
+The script parses command-line arguments to identify the interface and new MAC address.
+
+Interface Control
+Using the subprocess module, the script:
+
+Brings the interface down
+
+Applies the new MAC address
+
+Brings the interface back up
+
+Verification
+The script checks the interface configuration output using regular expressions to confirm that the MAC address was successfully changed.
+
+Feedback
+A success or error message is displayed based on the verification result.
+
+Project Structure
+graphql
+Kodu kopyala
+.
+├── MyMacChanger.py   # Main MAC changer script
+├── README.md        # Project documentation
+Security Notes
+MAC address spoofing is commonly used in:
+
+Wireless security testing
+
+Network anonymity experiments
+
+Penetration testing labs
+
+Modern networks may detect MAC changes using:
+
+Network Access Control (NAC)
+
+DHCP fingerprinting
+
+Behavioral monitoring
+
+Understanding how MAC spoofing works is essential for both offensive and defensive security.
+
 Contributing
-To contribute, please submit an issue or pull request. Discuss potential changes before making them to ensure the project's direction is aligned with your contributions.
+Contributions are welcome.
+Please open an issue or submit a pull request, and discuss changes before making major modifications.
 
 License
-This project is licensed under the MIT License. Refer to the LICENSE file for details.
-
-Disclaimer
-Be aware that changing your MAC address may violate your network's terms of service or policies. Always use this tool responsibly and ensure you have the necessary permissions.
+This project is licensed under the MIT License.
+See the LICENSE file for details.
